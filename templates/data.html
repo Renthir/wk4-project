@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block content%}
+<h1>Here's some data, stranger!</h1>
+<br>
+<h2>For user {{ username }}</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Team ID</th>
+            <th scope="col">Team Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for team in user_teams %}
+        <tr>
+            <td>{{ team.id }}</td>
+            <td>{{ team.team_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

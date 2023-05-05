@@ -49,6 +49,12 @@ def add_project():
         return redirect(url_for('home'))
     else:
         return redirect(url_for("home"))
+    
+@app.route('/data')
+def data_page():
+    username = User.query.get(user_id).username
+    user_teams = Team.query.filter_by(user_id=user_id).all()
+    return render_template("data.html", username=username, user_teams=user_teams)
 
 
 
