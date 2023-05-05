@@ -3,20 +3,52 @@
 <h1>Here's some data, stranger!</h1>
 <br>
 <h2>For user {{ username }}</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Team ID</th>
-            <th scope="col">Team Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for team in user_teams %}
-        <tr>
-            <td>{{ team.id }}</td>
-            <td>{{ team.team_name }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+    <h3>User's Teams</h3>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Team ID</th>
+                <th scope="col">Team Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in user_teams %}
+            <tr>
+                <td>{{ team.id }}</td>
+                <td>{{ team.team_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h3>User's Projects</h3>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Project ID</th>
+                <th scope="col">Project Name</th>
+                <th scope="col">Project Description</th>
+                <th scope="col">Completed?</th>
+                <th scope="col">Team ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for projects in team_projects %}
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.project_name }}</td>
+                    <td>{{ project.description}}</td>
+                    <td>{{ project.completed}}</td>
+                    <td>{{ project.team_id }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

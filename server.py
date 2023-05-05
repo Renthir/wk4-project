@@ -53,8 +53,10 @@ def add_project():
 @app.route('/data')
 def data_page():
     username = User.query.get(user_id).username
-    user_teams = Team.query.filter_by(user_id=user_id).all()
-    return render_template("data.html", username=username, user_teams=user_teams)
+    user_teams = User.query.get(user_id).teams
+    team_projects = [Team.query.get(team.id).projects for team in user_teams]
+
+    return render_template("data.html", username=username, user_teams=user_teams, team_projects=team_projects)
 
 
 
